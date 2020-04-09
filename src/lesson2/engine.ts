@@ -6,7 +6,28 @@ import {
   mathOperatorsPriorities,
 } from './mathOperators'
 
-const [FIRST, SECOND] = mathPriorities
+const [UNARY, FIRST, SECOND] = mathPriorities
+
+export const unaryPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
+  stack.reduce<ParsedLineType>((result, nextItem) => {
+    const prevItem = result[result.length - 1]
+
+    if (
+      !isNumber(String(nextItem)) &&
+      mathOperatorsPriorities[nextItem] === UNARY
+    ) {
+      if (!mathOperators[nextItem]) {
+        throw new TypeError('Unexpected stack!')
+      }
+      result = [
+        ...result.slice(0, -1),
+        mathOperators[nextItem](Number(prevItem)),
+      ]
+    } else {
+      result.push(nextItem)
+    }
+    return result
+  }, [])
 
 export const firstPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
   stack.reduce<ParsedLineType>((result, nextItem) => {

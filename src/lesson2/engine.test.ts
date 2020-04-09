@@ -1,4 +1,14 @@
-import { firstPrioritiesCalc, secondPrioritiesCalc } from './engine'
+import {
+  unaryPrioritiesCalc,
+  firstPrioritiesCalc,
+  secondPrioritiesCalc,
+} from './engine'
+
+describe('unaryPrioritiesCalc', () => {
+  it('[5 ! + 2]', () => {
+    expect(unaryPrioritiesCalc([5, '!', '+', 2])).toEqual([120, '+', 2])
+  })
+})
 
 describe('firstPrioritiesCalc simple cases', () => {
   it('[1, * 32]', () => {

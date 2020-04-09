@@ -1,4 +1,5 @@
-import { mul, div, add, minus } from './mathOperators'
+import { mul, div, add, minus, square, power, factorial } from './mathOperators'
+import { idText } from 'typescript'
 
 describe('mathOperators test cases', () => {
   it('mul 1 * 2 to equal 2', () => {
@@ -23,5 +24,17 @@ describe('mathOperators test cases', () => {
 
   it('minus 4 - 2 to equal 2', () => {
     expect(minus(4, 2)).toBe(2)
+  })
+
+  it('5 squared equal 25', () => {
+    expect(square(5)).toBe(25)
+  })
+
+  it('7 to the power of 2 equal 49', () => {
+    expect(power(7, 2)).toBe(49)
+  })
+
+  it('factorial 5 equal 120', () => {
+    expect(factorial(5)).toBe(120)
   })
 })
