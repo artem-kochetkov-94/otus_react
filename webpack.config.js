@@ -2,10 +2,10 @@ const path = require('path')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: './src/index.tsx',
   output: {
-    filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
+    filename: 'index.js',
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
@@ -15,18 +15,13 @@ module.exports = {
       {
         test: /\.(js|ts)x?$/,
         exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-          },
-        },
+        loader: 'babel-loader',
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      tepmlate: './src/index.html',
+      template: './src/index.html',
     }),
   ],
   devtool: 'source-map',
