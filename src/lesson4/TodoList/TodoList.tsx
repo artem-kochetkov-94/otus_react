@@ -1,0 +1,41 @@
+import React, { useState } from 'react'
+import { TodoListItem } from '../TodoListItem'
+import { TodoListItemData } from './'
+import { TodoListForm } from '../TodoListForm'
+
+interface TodoListProps {
+  todoList: TodoListItemData[]
+}
+
+export const TodoList: React.FC<TodoListProps> = (props) => {
+  const [todoList, setTodoList] = useState<TodoListItemData[]>(props.todoList)
+
+  const createTodoItem = (todoItem: TodoListItemData) => {
+    setTodoList([...todoList, todoItem])
+  }
+
+  const completeTask = (id: string) => {
+    const todoItem = todoList.find((item) => item.id === id)
+    todoItem.isCompleted = true
+    setTodoList([...todoList])
+  }
+
+  const removeTask = (id: string) => {
+    const newTodoList = todoList.filter((item) => item.id !== id)
+    setTodoList(newTodoList)
+  }
+
+  return (
+    <div>
+      {todoList.map((listItem: TodoListItemData) => (
+        <TodoListItem
+          key={listItem.id}
+          {...listItem}
+          onDone={completeTask.bind(null, listItem.id)}
+          onRemove={removeTask.bind(null, listItem.id)}
+        />
+      ))}
+      <TodoListForm onCreate={createTodoItem} />
+    </div>
+  )
+}
