@@ -1,9 +1,10 @@
 import React from 'react'
 import { TodoList } from './'
+import { withKnobs, object } from '@storybook/addon-knobs'
 
 export default {
   title: 'TodoList',
-  component: TodoList,
+  decorators: [withKnobs],
 }
 
 export const TodoListStory: React.FC<{}> = () => {
@@ -15,5 +16,5 @@ export const TodoListStory: React.FC<{}> = () => {
     },
   ]
 
-  return <TodoList todoList={todoList} />
+  return <TodoList todoList={object('todoList', todoList)} />
 }
