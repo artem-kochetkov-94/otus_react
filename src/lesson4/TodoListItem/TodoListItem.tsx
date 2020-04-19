@@ -14,7 +14,7 @@ export const TodoListItem: React.FC<TodoListItemProps> = ({
 }) => {
   return (
     <div>
-      <div>{title}</div>
+      <div className="task-title">{title}</div>
       {isCompleted ? (
         <div className="task-completed">Выполнено</div>
       ) : (
