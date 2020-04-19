@@ -4,15 +4,6 @@ import { TodoList } from './'
 import { TodoListItem } from '../TodoListItem'
 import { TodoListForm } from '../TodoListForm'
 
-/**
- * проверим что рендерится форма создания задач
- *
- * проверим что рендерится список задач если есть данные
- *
- * если передаем пустой массив то рендерим
- * текст о том что нет задач в списке
- */
-
 const todoList = [
   {
     id: '1',
@@ -47,6 +38,9 @@ describe('Default render tests', () => {
 describe('Action tests', () => {
   it('Create new task', () => {
     const todoListWrapper = mount(<TodoList todoList={todoList} />)
+    todoListWrapper
+      .find('input')
+      .simulate('change', { target: { value: 'test' } })
     todoListWrapper.find(TodoListForm).find('button.add-task').simulate('click')
     expect(todoListWrapper.find(TodoListItem)).toHaveLength(2)
   })
