@@ -27,14 +27,18 @@ export const TodoList: React.FC<TodoListProps> = (props) => {
 
   return (
     <div>
-      {todoList.map((listItem: TodoListItemData) => (
-        <TodoListItem
-          key={listItem.id}
-          {...listItem}
-          onDone={completeTask.bind(null, listItem.id)}
-          onRemove={removeTask.bind(null, listItem.id)}
-        />
-      ))}
+      {todoList.length ? (
+        todoList.map((listItem: TodoListItemData) => (
+          <TodoListItem
+            key={listItem.id}
+            {...listItem}
+            onDone={completeTask.bind(null, listItem.id)}
+            onRemove={removeTask.bind(null, listItem.id)}
+          />
+        ))
+      ) : (
+        <p className="todo-list-empty">Спискок задач пуст</p>
+      )}
       <TodoListForm onCreate={createTodoItem} />
     </div>
   )

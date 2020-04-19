@@ -16,11 +16,15 @@ export const TodoListItem: React.FC<TodoListItemProps> = ({
     <div>
       <div>{title}</div>
       {isCompleted ? (
-        <div>Выполнено</div>
+        <div className="task-completed">Выполнено</div>
       ) : (
-        <button onClick={onDone}>Закрыть задачу</button>
+        <button onClick={onDone} className="close-task">
+          Закрыть задачу
+        </button>
       )}
-      <button onClick={onRemove}>Удалить задачу</button>
+      <button onClick={onRemove} className="remove-task">
+        Удалить задачу
+      </button>
     </div>
   )
 }

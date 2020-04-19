@@ -25,7 +25,9 @@ export const TodoListForm: React.FC<TodoListFormProps> = ({ onCreate }) => {
   return (
     <div>
       <input value={title} onChange={handleChangeTitle} />
-      <button onClick={createTodoItem}>Добавить</button>
+      <button onClick={createTodoItem} className="add-task">
+        Добавить
+      </button>
     </div>
   )
 }
