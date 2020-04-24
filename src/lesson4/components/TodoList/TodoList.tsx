@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { TodoListItem } from '../TodoListItem'
-import { TodoListItemData } from './'
-import { TodoListForm } from '../TodoListForm'
+import { TodoListItem, TodoListForm } from './'
+import { TodoListItemData } from 'types/todoListItem'
 
 interface TodoListProps {
   todoList: TodoListItemData[]

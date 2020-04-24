@@ -1,8 +1,6 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
-import { TodoList } from './'
-import { TodoListItem } from '../TodoListItem'
-import { TodoListForm } from '../TodoListForm'
+import { TodoList, TodoListItem, TodoListForm } from './'
 
 const todoList = [
   {

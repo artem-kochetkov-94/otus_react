@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { TodoListItemData } from '../TodoList'
+import { TodoListItemData } from 'types/todoListItem'
 import { v4 as uuidv4 } from 'uuid'
 
 interface TodoListFormProps {

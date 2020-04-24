@@ -1,5 +1,5 @@
 import React from 'react'
-import { TodoListItemData } from '../TodoList'
+import { TodoListItemData } from 'types/todoListItem'
 
 interface TodoListItemProps extends TodoListItemData {
   onDone: () => void
