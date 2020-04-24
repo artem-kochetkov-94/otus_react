@@ -78,7 +78,9 @@
     "loki": "^0.20.3"
   },
   "dependencies": {
+    "@types/jest": "^25.2.1",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "uuid": "^7.0.3"
   }
 }
