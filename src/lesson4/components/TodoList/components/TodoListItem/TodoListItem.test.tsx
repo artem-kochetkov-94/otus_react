@@ -17,28 +17,28 @@ describe('Default render tests', () => {
     ).toHaveLength(1)
   })
 
-  it('Render remove button', () => {
-    expect(
-      shallow(<TodoListItem {...mock} />).find('.remove-task'),
-    ).toHaveLength(1)
-  })
+  // it('Render remove button', () => {
+  //   expect(
+  //     shallow(<TodoListItem {...mock} />).find('.remove-task'),
+  //   ).toHaveLength(1)
+  // })
 
-  it('Render close button', () => {
-    expect(
-      shallow(<TodoListItem {...mock} />).find('.task-title'),
-    ).toHaveLength(1)
-  })
+  // it('Render close button', () => {
+  //   expect(
+  //     shallow(<TodoListItem {...mock} />).find('.task-title'),
+  //   ).toHaveLength(1)
+  // })
 
-  it('Render task completion header', () => {
-    expect(
-      shallow(<TodoListItem {...mock} isCompleted={true} />).find(
-        '.task-completed',
-      ),
-    ).toHaveLength(1)
-    expect(
-      shallow(<TodoListItem {...mock} isCompleted={true} />).find(
-        '.close-task',
-      ),
-    ).toHaveLength(0)
-  })
+  // it('Render task completion header', () => {
+  //   expect(
+  //     shallow(<TodoListItem {...mock} isCompleted={true} />).find(
+  //       '.task-completed',
+  //     ),
+  //   ).toHaveLength(1)
+  //   expect(
+  //     shallow(<TodoListItem {...mock} isCompleted={true} />).find(
+  //       '.close-task',
+  //     ),
+  //   ).toHaveLength(0)
+  // })
 })

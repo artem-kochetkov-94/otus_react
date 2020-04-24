@@ -12,6 +12,7 @@ module.exports = {
     alias: {
       src: path.resolve(__dirname, 'src/'),
       types: path.resolve(__dirname, 'src/types/'),
+      styles: path.resolve(__dirname, 'src/styles/'),
     },
   },
   module: {
@@ -20,6 +21,10 @@ module.exports = {
         test: /\.(js|ts)x?$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },

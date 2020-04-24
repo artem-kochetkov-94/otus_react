@@ -1,5 +1,8 @@
 import React from 'react'
 import { TodoListItemData } from 'types/todoListItem'
+import { Button } from 'src/components/Button'
+import { Text } from 'styles/text'
+import { Wrapper, TaskComplete } from './styles'
 
 interface TodoListItemProps extends TodoListItemData {
   onDone: () => void
@@ -13,18 +16,18 @@ export const TodoListItem: React.FC<TodoListItemProps> = ({
   onRemove,
 }) => {
   return (
-    <div>
-      <div className="task-title">{title}</div>
+    <Wrapper>
+      <Text className="task-title">{title}</Text>
       {isCompleted ? (
-        <div className="task-completed">Выполнено</div>
+        <TaskComplete className="task-completed">Выполнено</TaskComplete>
       ) : (
-        <button onClick={onDone} className="close-task">
+        <Button customType="primary" onClick={onDone} className="close-task">
           Закрыть задачу
-        </button>
+        </Button>
       )}
-      <button onClick={onRemove} className="remove-task">
+      <Button customType="dangerous" onClick={onRemove} className="remove-task">
         Удалить задачу
-      </button>
-    </div>
+      </Button>
+    </Wrapper>
   )
 }

@@ -1,11 +1,11 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { TodoList } from './lesson4/TodoList'
+import { TodoList } from './lesson4/components'
 
 const todoList = [
   {
     id: '1',
-    title: 'task 1',
+    title: 'Сделать домашку',
     isCompleted: false,
   },
 ]
