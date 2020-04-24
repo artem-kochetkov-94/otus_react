@@ -7,7 +7,7 @@ interface TodoListFormProps {
 }
 
 export const TodoListForm: React.FC<TodoListFormProps> = ({ onCreate }) => {
-  const [title, setTitle] = useState<string>('')
+  const [title, setTitle] = useState('')
 
   const handleChangeTitle = (e) => setTitle(e.target.value)
 

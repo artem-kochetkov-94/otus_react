@@ -15,9 +15,16 @@ export const TodoList: React.FC<TodoListProps> = (props) => {
   }
 
   const completeTask = (id: string) => {
-    const todoItem = todoList.find((item) => item.id === id)
-    todoItem.isCompleted = true
-    setTodoList([...todoList])
+    const newTodoList = todoList.map((item) =>
+      item.id === id
+        ? {
+            ...item,
+            isCompleted: true,
+          }
+        : item,
+    )
+
+    setTodoList([...newTodoList])
   }
 
   const removeTask = (id: string) => {
