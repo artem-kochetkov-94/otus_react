@@ -14,7 +14,7 @@ export const TodoListItemStory: React.FC<{}> = () => {
     <TodoListItem
       id={text('id', 'test')}
       title={text('title', 'test')}
-      isCompleted={boolean('isCompleted', false)}
+      completed={boolean('completed', false)}
       onDone={action('Закрыть задачу')}
       onRemove={action('Удалить задачу')}
     />

@@ -7,7 +7,7 @@ const todoList = [
   {
     id: '1',
     title: 'task 1',
-    isCompleted: false,
+    completed: false,
   },
 ]
 

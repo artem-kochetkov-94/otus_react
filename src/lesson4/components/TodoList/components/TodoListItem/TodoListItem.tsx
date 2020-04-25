@@ -11,14 +11,14 @@ interface TodoListItemProps extends TodoListItemData {
 
 export const TodoListItem: React.FC<TodoListItemProps> = ({
   title,
-  isCompleted,
+  completed,
   onDone,
   onRemove,
 }) => {
   return (
     <Wrapper>
       <Text className="task-title">{title}</Text>
-      {isCompleted ? (
+      {completed ? (
         <TaskCompleted>Выполнено</TaskCompleted>
       ) : (
         <Button customType="primary" onClick={onDone} className="close-task">

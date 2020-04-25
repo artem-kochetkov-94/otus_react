@@ -18,7 +18,7 @@ export const TodoListForm: React.FC<TodoListFormProps> = ({ onCreate }) => {
     const newTodoItem: TodoListItemData = {
       id: uuidv4(),
       title,
-      isCompleted: false,
+      completed: false,
     }
 
     onCreate(newTodoItem)
