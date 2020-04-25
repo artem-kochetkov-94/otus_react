@@ -1,6 +1,7 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 import { TodoList, TodoListItem, TodoListForm } from './'
+import { TaskCompleted } from './components/TodoListItem/styles'
 
 const todoList = [
   {
@@ -61,8 +62,8 @@ describe('Action tests', () => {
     expect(
       todoListWrapper.find(TodoListItem).find('button.close-task'),
     ).toHaveLength(0)
-    expect(
-      todoListWrapper.find(TodoListItem).find('.task-completed'),
-    ).toHaveLength(1)
+    expect(todoListWrapper.find(TodoListItem).find(TaskCompleted)).toHaveLength(
+      1,
+    )
   })
 })

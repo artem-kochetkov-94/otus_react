@@ -29,7 +29,6 @@ export const ButtonStyled = styled.button`
   ${ButtonBase};
   ${({ disabled }: ButtonProps) => (disabled ? ButtonDisabled : '')};
   ${({ customType }: ButtonProps) => {
-    console.log(customType)
     switch (customType) {
       case 'primary':
         return ButtonPrimary

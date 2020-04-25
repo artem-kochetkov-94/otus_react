@@ -2,7 +2,7 @@ import React from 'react'
 import { TodoListItemData } from 'types/todoListItem'
 import { Button } from 'src/components/Button'
 import { Text } from 'styles/text'
-import { Wrapper, TaskComplete } from './styles'
+import { Wrapper, TaskCompleted } from './styles'
 
 interface TodoListItemProps extends TodoListItemData {
   onDone: () => void
@@ -19,7 +19,7 @@ export const TodoListItem: React.FC<TodoListItemProps> = ({
     <Wrapper>
       <Text className="task-title">{title}</Text>
       {isCompleted ? (
-        <TaskComplete className="task-completed">Выполнено</TaskComplete>
+        <TaskCompleted>Выполнено</TaskCompleted>
       ) : (
         <Button customType="primary" onClick={onDone} className="close-task">
           Закрыть задачу

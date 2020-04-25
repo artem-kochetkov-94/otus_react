@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   border: 1px solid #000;
 `
 
-export const TaskComplete = styled.div`
+export const TaskCompleted = styled.div`
   margin-bottom: 5px;
   font-size: 16px;
   font-weight: 700;
