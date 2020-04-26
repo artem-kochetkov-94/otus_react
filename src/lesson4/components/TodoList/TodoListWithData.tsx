@@ -16,7 +16,7 @@ export const TodoListWithData: React.FC<{}> = () => {
         setTodoList(newTodoList)
       }
     }
-  }, [])
+  }, [setTodoList])
 
   return <TodoList todoList={todoList} />
 }

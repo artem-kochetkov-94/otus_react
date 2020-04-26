@@ -3,7 +3,7 @@ import { TodoListItemData } from 'types/todoListItem'
 import { v4 as uuidv4 } from 'uuid'
 import { Text } from 'styles/text'
 import { Input } from './styles'
-import { Button } from 'src/components/Button'
+import { Button } from 'styles/button'
 
 interface TodoListFormProps {
   onCreate: (todoItem: TodoListItemData) => void

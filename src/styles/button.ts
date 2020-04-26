@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
-import { ButtonProps } from './'
+import { ButtonProps } from 'types/button'
 
 const ButtonBase = css`
   display: inline-flex;
@@ -25,7 +25,7 @@ const ButtonDisabled = css`
   opacity: 0.2;
 `
 
-export const ButtonStyled = styled.button`
+export const Button = styled.button`
   ${ButtonBase};
   ${({ disabled }: ButtonProps) => (disabled ? ButtonDisabled : '')};
   ${({ customType }: ButtonProps) => {

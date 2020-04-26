@@ -1,6 +1,6 @@
 import React from 'react'
 import { TodoListItemData } from 'types/todoListItem'
-import { Button } from 'src/components/Button'
+import { Button } from 'styles/button'
 import { Text } from 'styles/text'
 import { Wrapper, TaskCompleted } from './styles'
 
