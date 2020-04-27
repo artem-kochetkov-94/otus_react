@@ -1,16 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import { TodoListItem, TodoListForm } from './'
 import { TodoListItemData } from 'types/todoListItem'
+import { ButtonPage, Pagination } from './styles'
 
 interface TodoListProps {
   todoList: TodoListItemData[]
 }
 
+const DEFAULT_PAGE = 1
+const DEFAULT_PAGE_SIZE = 20
+
 export const TodoList: React.FC<TodoListProps> = (props) => {
   const [todoList, setTodoList] = useState<TodoListItemData[]>(props.todoList)
+  const [amount, setAmount] = useState(todoList.length)
+  const [page, setPage] = useState(DEFAULT_PAGE)
+  const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE)
+
+  const offset = (page - 1) * pageSize
 
   useEffect(() => {
     setTodoList(props.todoList)
+    setAmount(props.todoList.length)
   }, [props.todoList])
 
   const createTodoItem = (todoItem: TodoListItemData) => {
@@ -35,21 +45,56 @@ export const TodoList: React.FC<TodoListProps> = (props) => {
     setTodoList(newTodoList)
   }
 
+  const handleInputChange = (event) => {
+    setPageSize(event.target.value)
+  }
+
+  const getPagination = () => {
+    const buttons = []
+
+    const totalPage = (amount + (pageSize - 1)) / pageSize
+
+    for (let i = 1; i <= totalPage; i++) {
+      buttons.push(
+        <ButtonPage key={i} isActive={page === i} onClick={() => setPage(i)}>
+          {i}
+        </ButtonPage>,
+      )
+    }
+
+    return (
+      <div>
+        <p>
+          pageSize:{' '}
+          <input value={pageSize} onChange={handleInputChange} type="number" />
+        </p>
+        <Pagination>{buttons}</Pagination>
+      </div>
+    )
+  }
+
+  const getTodoList = () => {
+    if (!todoList.length) {
+      return <p className="todo-list-empty">Спискок задач пуст</p>
+    }
+
+    return todoList
+      .slice(offset, offset + pageSize)
+      .map((listItem: TodoListItemData) => (
+        <TodoListItem
+          key={listItem.id}
+          {...listItem}
+          onDone={completeTask.bind(null, listItem.id)}
+          onRemove={removeTask.bind(null, listItem.id)}
+        />
+      ))
+  }
+
   return (
     <div>
-      {todoList.length ? (
-        todoList.map((listItem: TodoListItemData) => (
-          <TodoListItem
-            key={listItem.id}
-            {...listItem}
-            onDone={completeTask.bind(null, listItem.id)}
-            onRemove={removeTask.bind(null, listItem.id)}
-          />
-        ))
-      ) : (
-        <p className="todo-list-empty">Спискок задач пуст</p>
-      )}
       <TodoListForm onCreate={createTodoItem} />
+      {getPagination()}
+      {getTodoList()}
     </div>
   )
 }
