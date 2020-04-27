@@ -1,7 +1,6 @@
 import React from 'react'
-import { shallow, mount } from 'enzyme'
+import { mount } from 'enzyme'
 import { TodoListForm } from './'
-import { Input } from './styles'
 import renderer from 'react-test-renderer'
 
 describe('Default render tests', () => {
