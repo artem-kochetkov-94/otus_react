@@ -1,20 +1,15 @@
 import React from 'react'
-import { shallow, mount } from 'enzyme'
+import { mount } from 'enzyme'
 import { TodoListForm } from './'
+import renderer from 'react-test-renderer'
 
 describe('Default render tests', () => {
   const onClick = jest.fn()
 
-  it('Render input', () => {
+  it('renders snapshot', () => {
     expect(
-      shallow(<TodoListForm onCreate={onClick} />).find('input'),
-    ).toHaveLength(1)
-  })
-
-  it('Render button', () => {
-    expect(
-      shallow(<TodoListForm onCreate={onClick} />).find('button.add-task'),
-    ).toHaveLength(1)
+      renderer.create(<TodoListForm onCreate={onClick} />).toJSON(),
+    ).toMatchSnapshot()
   })
 })
 

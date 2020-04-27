@@ -1,14 +1,13 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
-import { TodoList } from './'
-import { TodoListItem } from '../TodoListItem'
-import { TodoListForm } from '../TodoListForm'
+import { TodoList, TodoListItem, TodoListForm } from './'
+import { TaskCompleted } from './components/TodoListItem/styles'
 
 const todoList = [
   {
     id: '1',
     title: 'task 1',
-    isCompleted: false,
+    completed: false,
   },
 ]
 
@@ -63,8 +62,8 @@ describe('Action tests', () => {
     expect(
       todoListWrapper.find(TodoListItem).find('button.close-task'),
     ).toHaveLength(0)
-    expect(
-      todoListWrapper.find(TodoListItem).find('.task-completed'),
-    ).toHaveLength(1)
+    expect(todoListWrapper.find(TodoListItem).find(TaskCompleted)).toHaveLength(
+      1,
+    )
   })
 })

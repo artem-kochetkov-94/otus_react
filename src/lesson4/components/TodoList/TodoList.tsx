@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
-import { TodoListItem } from '../TodoListItem'
-import { TodoListItemData } from './'
-import { TodoListForm } from '../TodoListForm'
+import React, { useState, useEffect } from 'react'
+import { TodoListItem, TodoListForm } from './'
+import { TodoListItemData } from 'types/todoListItem'
 
 interface TodoListProps {
   todoList: TodoListItemData[]
@@ -9,6 +8,10 @@ interface TodoListProps {
 
 export const TodoList: React.FC<TodoListProps> = (props) => {
   const [todoList, setTodoList] = useState<TodoListItemData[]>(props.todoList)
+
+  useEffect(() => {
+    setTodoList(props.todoList)
+  }, [props.todoList])
 
   const createTodoItem = (todoItem: TodoListItemData) => {
     setTodoList([...todoList, todoItem])
@@ -19,7 +22,7 @@ export const TodoList: React.FC<TodoListProps> = (props) => {
       item.id === id
         ? {
             ...item,
-            isCompleted: true,
+            completed: true,
           }
         : item,
     )

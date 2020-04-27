@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
-import { TodoListItemData } from '../TodoList'
+import { TodoListItemData } from 'types/todoListItem'
 import { v4 as uuidv4 } from 'uuid'
+import { Text } from 'styles/text'
+import { Input } from './styles'
+import { Button } from 'styles/button'
 
 interface TodoListFormProps {
   onCreate: (todoItem: TodoListItemData) => void
@@ -15,7 +18,7 @@ export const TodoListForm: React.FC<TodoListFormProps> = ({ onCreate }) => {
     const newTodoItem: TodoListItemData = {
       id: uuidv4(),
       title,
-      isCompleted: false,
+      completed: false,
     }
 
     onCreate(newTodoItem)
@@ -24,14 +27,16 @@ export const TodoListForm: React.FC<TodoListFormProps> = ({ onCreate }) => {
 
   return (
     <div>
-      <input value={title} onChange={handleChangeTitle} />
-      <button
+      <Text>Создать задачу</Text>
+      <Input value={title} onChange={handleChangeTitle} />
+      <Button
+        customType="primary"
         onClick={createTodoItem}
         className="add-task"
         disabled={!title.length}
       >
         Добавить
-      </button>
+      </Button>
     </div>
   )
 }

@@ -1,11 +1,12 @@
 import React from 'react'
-import { shallow, mount } from 'enzyme'
+import { shallow } from 'enzyme'
 import { TodoListItem } from './'
+import { TaskCompleted } from './styles'
 
 const mock = {
   id: 'test',
   title: 'test',
-  isCompleted: false,
+  completed: false,
   onDone: jest.fn,
   onRemove: jest.fn,
 }
@@ -31,14 +32,10 @@ describe('Default render tests', () => {
 
   it('Render task completion header', () => {
     expect(
-      shallow(<TodoListItem {...mock} isCompleted={true} />).find(
-        '.task-completed',
-      ),
+      shallow(<TodoListItem {...mock} completed={true} />).find(TaskCompleted),
     ).toHaveLength(1)
     expect(
-      shallow(<TodoListItem {...mock} isCompleted={true} />).find(
-        '.close-task',
-      ),
+      shallow(<TodoListItem {...mock} completed={true} />).find('.close-task'),
     ).toHaveLength(0)
   })
 })

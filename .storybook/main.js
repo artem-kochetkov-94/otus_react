@@ -28,6 +28,11 @@ module.exports = {
       ...config,
       resolve: {
         extensions: custom.resolve.extensions,
+        alias: {
+          src: path.resolve(__dirname, '../src/'),
+          types: path.resolve(__dirname, '../src/types/'),
+          styles: path.resolve(__dirname, '../src/styles/'),
+        },
       },
       module: {
         ...config.module,
