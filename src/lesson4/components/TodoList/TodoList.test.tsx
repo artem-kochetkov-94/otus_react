@@ -38,7 +38,7 @@ describe('Action tests', () => {
   it('Create new task', () => {
     const todoListWrapper = mount(<TodoList todoList={todoList} />)
     todoListWrapper
-      .find('input')
+      .find('.todo-list-form input')
       .simulate('change', { target: { value: 'test' } })
     todoListWrapper.find(TodoListForm).find('button.add-task').simulate('click')
     expect(todoListWrapper.find(TodoListItem)).toHaveLength(2)

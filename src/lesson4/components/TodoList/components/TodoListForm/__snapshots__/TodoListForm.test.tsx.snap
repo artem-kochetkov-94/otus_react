@@ -35,7 +35,9 @@ exports[`Default render tests renders snapshot 1`] = `
   color: #fff;
 }
 
-<div>
+<div
+  className="todo-list-form"
+>
   <p
     className="emotion-0"
   >
