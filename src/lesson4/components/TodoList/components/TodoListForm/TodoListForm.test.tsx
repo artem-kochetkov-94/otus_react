@@ -36,7 +36,6 @@ describe('Actions tests', () => {
     todoListFormWrapper
       .find('input[name="task-header"]')
       .simulate('change', { target: { value: 'test' } })
-    // todoListFormWrapper.find('button.add-task').simulate('click')
 
     todoListFormWrapper.find(Form).simulate('submit', fakeEvent)
 
