@@ -3,6 +3,7 @@ import { mount } from 'enzyme'
 import { TodoListForm } from './'
 import renderer from 'react-test-renderer'
 import { Form } from './styles'
+import moment from 'moment'
 
 describe('Default render tests', () => {
   const onClick = jest.fn()
@@ -29,19 +30,14 @@ describe('Actions tests', () => {
   })
 
   it('Create task', () => {
-    const onClick = jest.fn()
-    const fakeEvent = { preventDefault: () => console.log('preventDefault') }
+    const onSubmit = jest.fn()
 
-    const todoListFormWrapper = mount(<TodoListForm onCreate={onClick} />)
+    const todoListFormWrapper = mount(<TodoListForm onSubmit={onSubmit} />)
     todoListFormWrapper
       .find('input[name="task-header"]')
       .simulate('change', { target: { value: 'test' } })
 
-    todoListFormWrapper.find(Form).simulate('submit', fakeEvent)
-
-    expect(onClick).toHaveBeenCalled()
-    expect(
-      todoListFormWrapper.find('input[name="task-header"]').prop('value'),
-    ).toEqual('')
+    todoListFormWrapper.find('button[type="submit"]').simulate('submit')
+    expect(onSubmit).toHaveBeenCalled()
   })
 })

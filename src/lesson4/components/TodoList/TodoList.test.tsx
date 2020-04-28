@@ -38,7 +38,7 @@ describe('Default render tests', () => {
 describe('Action tests', () => {
   it('Create new task', () => {
     const todoListWrapper = mount(<TodoList todoList={todoList} />)
-    const fakeEvent = { preventDefault: () => console.log('preventDefault') }
+    const fakeEvent = { preventDefault: () => undefined }
 
     todoListWrapper
       .find('.todo-list-form input[name="task-header"]')

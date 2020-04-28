@@ -8,23 +8,26 @@ import moment from 'moment'
 import { executer } from 'types/executer'
 
 interface TodoListFormProps {
-  onCreate: (todoItem: TodoListItemData) => void
+  onSubmit: (todoItem: TodoListItemData) => void
 }
 
-export const TodoListForm: React.FC<TodoListFormProps> = ({ onCreate }) => {
+export const TodoListForm: React.FC<TodoListFormProps> = ({ onSubmit }) => {
   const today: string = moment().format('YYYY-MM-DD')
 
   const [title, setTitle] = useState('')
   const [date, setDate] = useState(today)
   const [executer, setExecuter] = useState<executer>('Managment')
 
-  const handleChangeTitle = (e) => setTitle(e.target.value)
+  const handleChangeTitle = (e: React.ChangeEvent) =>
+    setTitle((e.target as HTMLInputElement).value)
 
-  const handleChangeDate = (e) => setDate(e.target.value)
+  const handleChangeDate = (e: React.ChangeEvent) =>
+    setDate((e.target as HTMLInputElement).value)
 
-  const handleChangeExecutor = (e) => setExecutor(e.target.value)
+  const handleChangeExecutor = (e: React.ChangeEvent) =>
+    setExecuter(e.target.value)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     const newTodoItem: TodoListItemData = {
       id: uuidv4(),
@@ -34,7 +37,7 @@ export const TodoListForm: React.FC<TodoListFormProps> = ({ onCreate }) => {
       executer,
     }
 
-    onCreate(newTodoItem)
+    onSubmit(newTodoItem)
     setTitle('')
   }
 

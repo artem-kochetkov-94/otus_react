@@ -93,7 +93,7 @@ export const TodoList: React.FC<TodoListProps> = (props) => {
     <div>
       <p>todoList.length {todoList.length}</p>
       <p>amount {amount}</p>
-      <TodoListForm onCreate={createTodoItem} />
+      <TodoListForm onSubmit={createTodoItem} />
       {getPagination()}
       {getTodoList()}
     </div>
