@@ -12,15 +12,14 @@ const DEFAULT_PAGE_SIZE = 20
 
 export const TodoList: React.FC<TodoListProps> = (props) => {
   const [todoList, setTodoList] = useState<TodoListItemData[]>(props.todoList)
-  const [amount, setAmount] = useState(todoList.length)
   const [page, setPage] = useState(DEFAULT_PAGE)
   const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE)
 
   const offset = (page - 1) * pageSize
+  const amount = todoList.length
 
   useEffect(() => {
     setTodoList(props.todoList)
-    setAmount(props.todoList.length)
   }, [props.todoList])
 
   const createTodoItem = (todoItem: TodoListItemData) => {
@@ -92,6 +91,8 @@ export const TodoList: React.FC<TodoListProps> = (props) => {
 
   return (
     <div>
+      <p>todoList.length {todoList.length}</p>
+      <p>amount {amount}</p>
       <TodoListForm onCreate={createTodoItem} />
       {getPagination()}
       {getTodoList()}

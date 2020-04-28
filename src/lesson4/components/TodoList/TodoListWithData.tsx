@@ -13,7 +13,8 @@ export const TodoListWithData: React.FC<{}> = () => {
     xhr.onload = function () {
       if (xhr.status === 200) {
         const newTodoList = JSON.parse(xhr.response)
-        setTodoList(newTodoList)
+        // setTodoList(newTodoList)
+        setTodoList([])
       }
     }
   }, [])
