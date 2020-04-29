@@ -12,12 +12,16 @@ interface TodoListItemProps extends TodoListItemData {
 export const TodoListItem: React.FC<TodoListItemProps> = ({
   title,
   completed,
+  date,
+  executer,
   onDone,
   onRemove,
 }) => {
   return (
     <Wrapper>
       <Text className="task-title">{title}</Text>
+      {date && <p>Дата исполнения: {date}</p>}
+      {executer && <p>Исполнитель: {executer}</p>}
       {completed ? (
         <TaskCompleted>Выполнено</TaskCompleted>
       ) : (

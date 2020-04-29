@@ -1,17 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import { TodoListForm } from './'
-import renderer from 'react-test-renderer'
-
-describe('Default render tests', () => {
-  const onClick = jest.fn()
-
-  it('renders snapshot', () => {
-    expect(
-      renderer.create(<TodoListForm onCreate={onClick} />).toJSON(),
-    ).toMatchSnapshot()
-  })
-})
+import { Form } from './styles'
 
 describe('Actions tests', () => {
   it('The button is locked if the field is empty', () => {
@@ -28,14 +18,14 @@ describe('Actions tests', () => {
   })
 
   it('Create task', () => {
-    const onClick = jest.fn()
+    const onSubmit = jest.fn()
 
-    const todoListFormWrapper = mount(<TodoListForm onCreate={onClick} />)
+    const todoListFormWrapper = mount(<TodoListForm onSubmit={onSubmit} />)
     todoListFormWrapper
-      .find('input')
+      .find('input[name="task-header"]')
       .simulate('change', { target: { value: 'test' } })
-    todoListFormWrapper.find('button.add-task').simulate('click')
-    expect(onClick).toHaveBeenCalled()
-    expect(todoListFormWrapper.find('input').prop('value')).toEqual('')
+
+    todoListFormWrapper.find('button[type="submit"]').simulate('submit')
+    expect(onSubmit).toHaveBeenCalled()
   })
 })

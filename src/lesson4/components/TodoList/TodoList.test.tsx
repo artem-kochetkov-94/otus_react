@@ -2,6 +2,7 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 import { TodoList, TodoListItem, TodoListForm } from './'
 import { TaskCompleted } from './components/TodoListItem/styles'
+import { Form } from './components/TodoListForm/styles'
 
 const todoList = [
   {
@@ -37,10 +38,14 @@ describe('Default render tests', () => {
 describe('Action tests', () => {
   it('Create new task', () => {
     const todoListWrapper = mount(<TodoList todoList={todoList} />)
+    const fakeEvent = { preventDefault: () => undefined }
+
     todoListWrapper
-      .find('input')
+      .find(Form)
+      .find('input[name="task-header"]')
       .simulate('change', { target: { value: 'test' } })
-    todoListWrapper.find(TodoListForm).find('button.add-task').simulate('click')
+
+    todoListWrapper.find(Form).simulate('submit', fakeEvent)
     expect(todoListWrapper.find(TodoListItem)).toHaveLength(2)
   })
 
