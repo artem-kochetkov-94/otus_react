@@ -41,7 +41,8 @@ describe('Action tests', () => {
     const fakeEvent = { preventDefault: () => undefined }
 
     todoListWrapper
-      .find('.todo-list-form input[name="task-header"]')
+      .find(Form)
+      .find('input[name="task-header"]')
       .simulate('change', { target: { value: 'test' } })
 
     todoListWrapper.find(Form).simulate('submit', fakeEvent)

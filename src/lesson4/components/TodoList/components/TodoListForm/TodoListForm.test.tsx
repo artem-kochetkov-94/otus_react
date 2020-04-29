@@ -1,19 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import { TodoListForm } from './'
-import renderer from 'react-test-renderer'
 import { Form } from './styles'
-import moment from 'moment'
-
-// describe('Default render tests', () => {
-//   const onClick = jest.fn()
-
-//   it('renders snapshot', () => {
-//     expect(
-//       renderer.create(<TodoListForm onCreate={onClick} />).toJSON(),
-//     ).toMatchSnapshot()
-//   })
-// })
 
 describe('Actions tests', () => {
   it('The button is locked if the field is empty', () => {

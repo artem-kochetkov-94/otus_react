@@ -42,7 +42,7 @@ export const TodoListForm: React.FC<TodoListFormProps> = ({ onSubmit }) => {
   }
 
   return (
-    <Form className="todo-list-form" onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <Text>Создать задачу</Text>
       <FormField>
         <Label>Название</Label>
