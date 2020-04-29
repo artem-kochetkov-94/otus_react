@@ -11,6 +11,10 @@ interface TodoListFormProps {
   onSubmit: (todoItem: TodoListItemData) => void
 }
 
+interface FormFieldWrapper {
+  label: string
+}
+
 export const TodoListForm: React.FC<TodoListFormProps> = ({ onSubmit }) => {
   const today: string = moment().format('YYYY-MM-DD')
 
@@ -41,20 +45,30 @@ export const TodoListForm: React.FC<TodoListFormProps> = ({ onSubmit }) => {
     setTitle('')
   }
 
+  const FormFieldWrapper: React.FC<FormFieldWrapper> = ({
+    label,
+    children,
+  }) => {
+    return (
+      <FormField>
+        {label && <Label>{label}</Label>}
+        {children}
+      </FormField>
+    )
+  }
+
   return (
     <Form onSubmit={handleSubmit}>
       <Text>Создать задачу</Text>
-      <FormField>
-        <Label>Название</Label>
+      <FormFieldWrapper label="Название">
         <Input
           value={title}
           onChange={handleChangeTitle}
           required
           name="task-header"
         />
-      </FormField>
-      <FormField>
-        <Label>Срок завершения</Label>
+      </FormFieldWrapper>
+      <FormFieldWrapper label="Срок завершения">
         <Input
           type="date"
           min={today}
@@ -62,9 +76,8 @@ export const TodoListForm: React.FC<TodoListFormProps> = ({ onSubmit }) => {
           onChange={handleChangeDate}
           required
         />
-      </FormField>
-      <FormField>
-        <Label>Исполнитель</Label>
+      </FormFieldWrapper>
+      <FormFieldWrapper label="Исполнитель">
         <select
           placeholder="Роль"
           required
@@ -76,7 +89,7 @@ export const TodoListForm: React.FC<TodoListFormProps> = ({ onSubmit }) => {
           <option value="Testing">Testing</option>
           <option value="Design">Design</option>
         </select>
-      </FormField>
+      </FormFieldWrapper>
       <Button
         customType="primary"
         type="submit"
