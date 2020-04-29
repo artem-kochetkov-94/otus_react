@@ -44,8 +44,9 @@ export const TodoList: React.FC<TodoListProps> = (props) => {
     setTodoList(newTodoList)
   }
 
-  const handleInputChange = (event) => {
-    setPageSize(event.target.value)
+  const handleInputChange = (e: React.ChangeEvent) => {
+    setPageSize(e.target.value)
+    setPage(DEFAULT_PAGE)
   }
 
   const getPagination = () => {
@@ -65,7 +66,12 @@ export const TodoList: React.FC<TodoListProps> = (props) => {
       <div>
         <p>
           pageSize:{' '}
-          <input value={pageSize} onChange={handleInputChange} type="number" />
+          <input
+            value={pageSize}
+            onChange={handleInputChange}
+            type="number"
+            min={5}
+          />
         </p>
         <Pagination>{buttons}</Pagination>
       </div>
@@ -91,8 +97,6 @@ export const TodoList: React.FC<TodoListProps> = (props) => {
 
   return (
     <div>
-      <p>todoList.length {todoList.length}</p>
-      <p>amount {amount}</p>
       <TodoListForm onSubmit={createTodoItem} />
       {getPagination()}
       {getTodoList()}
