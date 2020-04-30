@@ -1,13 +1,27 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import { TodoListForm } from './'
-import { Form } from './styles'
+import renderer from 'react-test-renderer'
+
+describe('Snapshot test', () => {
+  const onClick = jest.fn()
+
+  jest.mock('moment', () => () => ({
+    format: () => '3000-01-01',
+  }))
+
+  it('matches snapshot', () => {
+    expect(
+      renderer.create(<TodoListForm onSubmit={onClick} />).toJSON(),
+    ).toMatchSnapshot()
+  })
+})
 
 describe('Actions tests', () => {
   it('The button is locked if the field is empty', () => {
     const onClick = jest.fn()
 
-    const todoListFormWrapper = mount(<TodoListForm onCreate={onClick} />)
+    const todoListFormWrapper = mount(<TodoListForm onSubmit={onClick} />)
 
     expect(
       todoListFormWrapper.find('button.add-task').props().disabled,

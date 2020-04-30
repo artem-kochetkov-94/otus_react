@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot test matches snapshot 1`] = `
+.emotion-10 {
+  padding: 10px;
+  border: 1px solid #000;
+}
+
+.emotion-0 {
+  margin: 0;
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.emotion-3 {
+  margin-bottom: 20px;
+}
+
+.emotion-1 {
+  margin-bottom: 5px;
+}
+
+.emotion-2 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  min-width: 200px;
+  padding: 5px;
+}
+
+.emotion-9 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-width: 200px;
+  padding: 5px 15px;
+  font-size: 16px;
+  color: #000;
+  opacity: 0.2;
+  background-color: blue;
+  color: #fff;
+}
+
+<form
+  className="emotion-10"
+  onSubmit={[Function]}
+>
+  <p
+    className="emotion-0"
+  >
+    Создать задачу
+  </p>
+  <div
+    className="emotion-3"
+  >
+    <p
+      className="emotion-1"
+    >
+      Название
+    </p>
+    <input
+      className="emotion-2"
+      name="task-header"
+      onChange={[Function]}
+      required={true}
+      value=""
+    />
+  </div>
+  <div
+    className="emotion-3"
+  >
+    <p
+      className="emotion-1"
+    >
+      Срок завершения
+    </p>
+    <input
+      className="emotion-2"
+      min="2020-05-01"
+      onChange={[Function]}
+      required={true}
+      type="date"
+      value="2020-05-01"
+    />
+  </div>
+  <div
+    className="emotion-3"
+  >
+    <p
+      className="emotion-1"
+    >
+      Исполнитель
+    </p>
+    <select
+      defaultValue="Managment"
+      onChange={[Function]}
+      placeholder="Роль"
+      required={true}
+    >
+      <option
+        value="Managment"
+      >
+        Managment
+      </option>
+      <option
+        value="Development"
+      >
+        Development
+      </option>
+      <option
+        value="Testing"
+      >
+        Testing
+      </option>
+      <option
+        value="Design"
+      >
+        Design
+      </option>
+    </select>
+  </div>
+  <button
+    className="add-task emotion-9"
+    disabled={true}
+    type="submit"
+  >
+    Добавить
+  </button>
+</form>
+`;
