@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { TodoListItem, TodoListForm } from './'
+import { TodoListItem, TodoListFormContainer as TodoListForm } from './'
 import { TodoListItemData } from 'types/todoListItem'
 import { ButtonPage, Pagination } from './styles'
 

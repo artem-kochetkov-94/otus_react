@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import { TodoListForm } from './'
+import { TodoListFormContainer as TodoListForm } from './'
 import renderer from 'react-test-renderer'
 
 describe('Snapshot test', () => {

@@ -1,6 +1,10 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
-import { TodoList, TodoListItem, TodoListForm } from './'
+import {
+  TodoList,
+  TodoListItem,
+  TodoListFormContainer as TodoListForm,
+} from './'
 import { TaskCompleted } from './components/TodoListItem/styles'
 import { Form } from './components/TodoListForm/styles'
 
