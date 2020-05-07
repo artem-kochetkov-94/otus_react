@@ -1,7 +1,7 @@
 import React from 'react'
-import { shallow, mount } from 'enzyme'
+import { mount } from 'enzyme'
 import {
-  TodoList,
+  TodoListContainer as TodoList,
   TodoListItem,
   TodoListFormContainer as TodoListForm,
 } from './'
@@ -18,23 +18,19 @@ const todoList = [
 
 describe('Default render tests', () => {
   it('Render TodoListForm', () => {
-    expect(shallow(<TodoList todoList={[]} />).find(TodoListForm)).toHaveLength(
-      1,
-    )
+    expect(mount(<TodoList todoList={[]} />).find(TodoListForm)).toHaveLength(1)
   })
 
   it('Render TodoList with data', () => {
     expect(
-      shallow(<TodoList todoList={todoList} />).find(TodoListItem),
+      mount(<TodoList todoList={todoList} />).find(TodoListItem),
     ).toHaveLength(1)
   })
 
   it('Render TodoList without data', () => {
-    expect(shallow(<TodoList todoList={[]} />).find(TodoListItem)).toHaveLength(
-      0,
-    )
+    expect(mount(<TodoList todoList={[]} />).find(TodoListItem)).toHaveLength(0)
     expect(
-      shallow(<TodoList todoList={[]} />).find('p.todo-list-empty'),
+      mount(<TodoList todoList={[]} />).find('p.todo-list-empty'),
     ).toHaveLength(1)
   })
 })
