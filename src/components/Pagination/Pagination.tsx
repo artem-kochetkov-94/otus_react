@@ -6,7 +6,7 @@ interface PaginationProps {
   pageSize: number
   page: number
   setPage: (page: number) => void
-  handlePageSizeChange: (e: React.ChangeEvent) => void
+  onPageSizeChange: (value: string) => void
 }
 
 export const Pagination: React.FC<PaginationProps> = ({
@@ -14,8 +14,12 @@ export const Pagination: React.FC<PaginationProps> = ({
   pageSize,
   page,
   setPage,
-  handlePageSizeChange,
+  onPageSizeChange,
 }) => {
+  function handleChange(e: React.ChangeEvent) {
+    onPageSizeChange((e.target as HTMLInputElement).value)
+  }
+
   const buttons = []
 
   const totalPage = (amount + (pageSize - 1)) / pageSize
@@ -32,12 +36,7 @@ export const Pagination: React.FC<PaginationProps> = ({
     <div>
       <p>
         pageSize:{' '}
-        <input
-          value={pageSize}
-          onChange={handlePageSizeChange}
-          type="number"
-          min={5}
-        />
+        <input value={pageSize} onChange={handleChange} type="number" min={5} />
       </p>
       <PaginationStyled>{buttons}</PaginationStyled>
     </div>

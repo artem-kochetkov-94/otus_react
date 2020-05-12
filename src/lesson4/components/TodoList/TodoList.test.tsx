@@ -3,7 +3,7 @@ import { mount } from 'enzyme'
 import {
   TodoListContainer as TodoList,
   TodoListItem,
-  TodoListFormContainer as TodoListForm,
+  TodoListFormContainer,
 } from './'
 import { TaskCompleted } from './components/TodoListItem/styles'
 import { Form } from './components/TodoListForm/styles'
@@ -18,7 +18,9 @@ const todoList = [
 
 describe('Default render tests', () => {
   it('Render TodoListForm', () => {
-    expect(mount(<TodoList todoList={[]} />).find(TodoListForm)).toHaveLength(1)
+    expect(
+      mount(<TodoList todoList={[]} />).find(TodoListFormContainer),
+    ).toHaveLength(1)
   })
 
   it('Render TodoList with data', () => {

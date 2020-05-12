@@ -12,7 +12,7 @@ interface TodoListProps {
   pageSize: number
   page: number
   setPage: (page: number) => void
-  handlePageSizeChange: (e: React.ChangeEvent) => void
+  onPageSizeChange: (value: string) => void
 }
 
 export const TodoList: React.FC<TodoListProps> = (props: TodoListProps) => {
@@ -33,8 +33,8 @@ export const TodoList: React.FC<TodoListProps> = (props: TodoListProps) => {
       <TodoListItem
         key={listItem.id}
         {...listItem}
-        onDone={completeTask.bind(null, listItem.id)}
-        onRemove={removeTask.bind(null, listItem.id)}
+        onDone={() => completeTask(listItem.id)}
+        onRemove={() => removeTask(listItem.id)}
       />
     ))
   }

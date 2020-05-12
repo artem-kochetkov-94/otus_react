@@ -43,8 +43,8 @@ export const TodoListContainer: React.FC<TodoListContainerProps> = (props) => {
     setTodoList(newTodoList)
   }
 
-  const handlePageSizeChange = (e: React.ChangeEvent) => {
-    setPageSize(e.target.value)
+  const handlePageSizeChange = (value: string) => {
+    setPageSize(Number(value))
     setPage(DEFAULT_PAGE)
   }
 
@@ -57,7 +57,7 @@ export const TodoListContainer: React.FC<TodoListContainerProps> = (props) => {
     pageSize,
     page,
     setPage,
-    handlePageSizeChange,
+    onPageSizeChange: handlePageSizeChange,
   }
 
   return <TodoList {...todoListProps} />
