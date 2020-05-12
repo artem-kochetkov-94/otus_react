@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { TodoList } from './'
+import { TodoListContainer as TodoList } from './'
 import { TodoListItemData } from 'types/todoListItem'
 
 export const TodoListWithData: React.FC<{}> = () => {

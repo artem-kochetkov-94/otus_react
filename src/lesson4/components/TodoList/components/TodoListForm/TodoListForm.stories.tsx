@@ -1,5 +1,5 @@
 import React from 'react'
-import { TodoListForm } from './'
+import { TodoListFormContainer as TodoListForm } from './'
 import { action } from '@storybook/addon-actions'
 
 export default {
@@ -8,5 +8,5 @@ export default {
 }
 
 export const TodoListFormStory: React.FC<{}> = () => {
-  return <TodoListForm onCreate={action('Добавить')} />
+  return <TodoListForm onSubmit={action('Добавить')} />
 }
