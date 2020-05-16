@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { TodoListItemData } from 'types/todoListItem'
 import { TodoList } from './TodoList'
 
@@ -21,9 +21,10 @@ export const TodoListContainer: React.FC<TodoListContainerProps> = (props) => {
     setTodoList(props.todoList)
   }, [props.todoList])
 
-  const createTodoItem = (todoItem: TodoListItemData) => {
-    setTodoList([...todoList, todoItem])
-  }
+  const createTodoItem = useCallback(
+    (todoItem: TodoListItemData) => setTodoList([...todoList, todoItem]),
+    [todoList],
+  )
 
   const completeTask = (id: string) => {
     const newTodoList = todoList.map((item) =>

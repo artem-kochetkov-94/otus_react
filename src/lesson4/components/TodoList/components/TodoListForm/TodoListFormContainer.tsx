@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import { TodoListItemData } from 'types/todoListItem'
 import { v4 as uuidv4 } from 'uuid'
 import { FormField, Label } from './styles'
@@ -32,23 +32,26 @@ export const TodoListFormContainer: React.FC<TodoListFormProps> = ({
   const [date, setDate] = useState(today)
   const [executer, setExecuter] = useState<executer>('Managment')
 
-  const handleChange = (e: React.ChangeEvent) => {
-    const { name } = e.target
+  const handleChange = useCallback(
+    (e: React.ChangeEvent) => {
+      const { name } = e.target
 
-    switch (name) {
-      case 'task-header':
-        setTitle((e.target as HTMLInputElement).value)
-        break
-      case 'task-date':
-        setDate((e.target as HTMLInputElement).value)
-        break
-      case 'task-executer':
-        setExecuter(e.target.value)
-        break
-      default:
-        break
-    }
-  }
+      switch (name) {
+        case 'task-header':
+          setTitle((e.target as HTMLInputElement).value)
+          break
+        case 'task-date':
+          setDate((e.target as HTMLInputElement).value)
+          break
+        case 'task-executer':
+          setExecuter(e.target.value)
+          break
+        default:
+          break
+      }
+    },
+    [title, date, executer],
+  )
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
