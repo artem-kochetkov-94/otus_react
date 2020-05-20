@@ -18,7 +18,6 @@ export const authorizedOnlyHoc = <Props extends object>(
     //https://medium.com/javascript-in-plain-english/how-to-use-async-function-in-react-hook-useeffect-typescript-js-6204a788a435
     ;(async () => {
       const isAuthorized = await isLoggedIn()
-      console.log('isAuthorized', isAuthorized)
       setIsAuthorized(isAuthorized ? CheckState.succeed : CheckState.failed)
     })()
   }, [])

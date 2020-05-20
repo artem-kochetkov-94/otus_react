@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback } from 'react'
 import { useHistory } from 'react-router-dom'
 import { logout } from 'src/api/auth'
 
