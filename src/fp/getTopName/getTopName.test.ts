@@ -1,5 +1,4 @@
-import { getTopName } from './getTopName'
-import { teams } from './'
+import { getTopName, teams } from './'
 
 describe('getTopName', () => {
   it('getTopName works correctly', () => {
