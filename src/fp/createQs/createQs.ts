@@ -1,4 +1,4 @@
-export const createQs = (qsObj: { [key: string]: any }) => {
+export const createQs = (qsObj: { [key: string]: string }) => {
   const qs = Object.keys(qsObj).reduce(
     (accomulator, key) => (accomulator += `${key}=${qsObj[key]}&`),
     '?',

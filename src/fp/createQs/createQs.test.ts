@@ -1,4 +1,11 @@
-import { createQs, qsObj } from './'
+import { createQs } from './'
+
+export const qsObj: { [key: string]: string } = {
+  page: '2',
+  pageSize: '10',
+  total: '205',
+  somethingElse: 'value',
+}
 
 describe('createQs', () => {
   it('createQs works correctly', () => {
