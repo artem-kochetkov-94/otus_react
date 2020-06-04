@@ -83,12 +83,12 @@ exports[`Snapshot test matches snapshot 1`] = `
     </p>
     <input
       className="emotion-2"
-      min="2020-05-22"
+      min="2020-05-25"
       name="task-date"
       onChange={[Function]}
       required={true}
       type="date"
-      value="2020-05-22"
+      value="2020-05-25"
     />
   </div>
   <div
