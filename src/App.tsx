@@ -8,10 +8,9 @@ export const App: React.FC<{}> = () => (
   <ReduxProvider store={store}>
     <Router>
       <Switch>
-        {/* <Route path="/" exact component={PeopleScreenContainer} /> */}
+        <Route path="/" exact component={AppScreen} />
         <Route path="/login" component={LoginScreen} />
         <Route path="/people" component={PeopleScreenContainer} />
-        <Route path="/" exact component={AppScreen} />
       </Switch>
     </Router>
   </ReduxProvider>
