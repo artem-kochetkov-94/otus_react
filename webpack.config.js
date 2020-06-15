@@ -13,6 +13,7 @@ module.exports = {
       src: path.resolve(__dirname, 'src/'),
       types: path.resolve(__dirname, 'src/types/'),
       styles: path.resolve(__dirname, 'src/styles/'),
+      rdx: path.resolve(__dirname, 'src/redux/'),
     },
   },
   module: {
@@ -34,4 +35,7 @@ module.exports = {
     }),
   ],
   devtool: 'source-map',
+  devServer: {
+    historyApiFallback: true,
+  },
 }

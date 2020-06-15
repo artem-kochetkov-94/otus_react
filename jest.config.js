@@ -83,6 +83,7 @@ module.exports = {
     '^src(.*)$': '<rootDir>/src$1',
     '^types(.*)$': '<rootDir>/src/types$1',
     '^styles(.*)$': '<rootDir>/src/styles$1',
+    '^rdx(.*)$': '<rootDir>/src/redux$1',
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
