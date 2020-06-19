@@ -1,19 +1,22 @@
 import React, { useCallback } from 'react'
+import { ReduxToProps } from './HeaderContainer'
 import { useHistory } from 'react-router-dom'
-import { logout } from 'src/api/auth'
 
-export const Header: React.FC<{}> = () => {
-  const login = localStorage.getItem('login')
+type HeaderProps = ReduxToProps
+
+export const Header: React.FC<HeaderProps> = ({ user, logoutRequest }) => {
   const history = useHistory()
+
   const onSubmit = useCallback(async (ev) => {
     ev.preventDefault()
-    await logout()
-    history.push(`/login`)
+    logoutRequest({
+      history,
+    })
   }, [])
 
   return (
     <div>
-      <div>User: {login}</div>
+      <div>User: {user?.login}</div>
       <form onSubmit={onSubmit}>
         <button type="submit">Выйти</button>
       </form>

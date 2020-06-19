@@ -1,15 +1,16 @@
 import React, { useCallback, useState } from 'react'
+import { ReduxToProps } from './LoginScreenContainer'
 import { useHistory } from 'react-router-dom'
-import { login } from 'src/api/auth'
 
-export const LoginScreen: React.FC<{}> = () => {
+type LoginScreenProps = ReduxToProps
+
+export const LoginScreen: React.FC<LoginScreenProps> = ({ loginRequest }) => {
   const [name, setName] = useState('')
   const history = useHistory()
   const onSubmit = useCallback(
     async (ev) => {
       ev.preventDefault()
-      await login(name)
-      history.push(`/`)
+      loginRequest({ login: name, history })
     },
     [name],
   )
