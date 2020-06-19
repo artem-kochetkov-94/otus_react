@@ -1,17 +1,12 @@
 import React, { useCallback } from 'react'
 import { ReduxToProps } from './HeaderContainer'
-import { useHistory } from 'react-router-dom'
 
 type HeaderProps = ReduxToProps
 
 export const Header: React.FC<HeaderProps> = ({ user, logoutRequest }) => {
-  const history = useHistory()
-
   const onSubmit = useCallback(async (ev) => {
     ev.preventDefault()
-    logoutRequest({
-      history,
-    })
+    logoutRequest()
   }, [])
 
   return (
