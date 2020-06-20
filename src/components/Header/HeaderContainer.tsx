@@ -1,7 +1,7 @@
 import { Header } from './'
 import { connect } from 'react-redux'
 import { AppState, AppDispatch } from 'rdx/index'
-import { logoutRequest } from 'rdx/ducks/user'
+import { logoutRequest } from 'rdx/ducks/user/actions'
 import { bindActionCreators } from 'redux'
 import * as userSelectors from 'rdx/ducks/user/selectors'
 

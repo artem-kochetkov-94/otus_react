@@ -1,7 +1,7 @@
 import { LoginScreen } from './'
 import { connect } from 'react-redux'
 import { AppState, AppDispatch } from 'rdx/index'
-import { loginRequest } from 'rdx/ducks/user'
+import { loginRequest } from 'rdx/ducks/user/actions'
 import { bindActionCreators } from 'redux'
 
 const mapStateToProps = (state: AppState) => ({})
