@@ -1,10 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { AppState, AppDispatch } from 'rdx/index'
-import { loginRequest } from 'rdx/ducks/user'
+import { userActions, userSelectors } from 'rdx/ducks/user'
 import { bindActionCreators } from 'redux'
 import { Redirect } from 'react-router-dom'
-import * as userSelectors from 'rdx/ducks/user/selectors'
 
 interface AuthorizedOnlyProps {
   isAuthorized: boolean
@@ -39,7 +38,7 @@ const mapStateToProps = (state: AppState) => ({
 const mapDispatchToProps = (dispatch: AppDispatch) =>
   bindActionCreators(
     {
-      loginRequest,
+      loginRequest: userActions.loginRequest,
     },
     dispatch,
   )

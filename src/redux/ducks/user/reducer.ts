@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import * as userAllActions from './actions'
-import { InitialState, LoginSuccessPayload } from './'
+import { InitialState, LoginRequestPayload, LoginSuccessPayload } from './'
+import { createSelector } from '@reduxjs/toolkit'
+import type { AppState } from 'rdx/index'
 
 const initialState: InitialState = {
   data: null,
@@ -9,47 +10,70 @@ const initialState: InitialState = {
   isLogoutLoading: false,
 }
 
+const getUser = createSelector(
+  (state: AppState) => state.user.data,
+  (user) => user,
+)
+
+const isAuthorized = createSelector(
+  (state: AppState) => state.user.isAuthorized,
+  (isAuthorized) => isAuthorized,
+)
+
+const isAuthorizationLoading = createSelector(
+  (state: AppState) => state.user.isAuthorizationLoading,
+  (isAuthorizationLoading) => isAuthorizationLoading,
+)
+
+const isLogoutLoading = createSelector(
+  (state: AppState) => state.user.isLogoutLoading,
+  (isLogoutLoading) => isLogoutLoading,
+)
+
+export const userSelectors = {
+  getUser,
+  isAuthorized,
+  isAuthorizationLoading,
+  isLogoutLoading,
+}
+
 export const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(userAllActions.loginRequest, (state, action) => {
+  reducers: {
+    loginRequest: (state, action: PayloadAction<LoginRequestPayload>) => {
       state.isAuthorizationLoading = true
       state.isAuthorized = false
       return state
-    }),
-      builder.addCase(
-        userAllActions.loginSuccess,
-        (state, action: PayloadAction<LoginSuccessPayload>) => {
-          const {
-            payload: { user },
-          } = action
-          state.isAuthorizationLoading = false
-          state.isAuthorized = true
-          state.data = user
-          return state
-        },
-      ),
-      builder.addCase(userAllActions.loginFailure, (state, action) => {
-        state.isAuthorizationLoading = false
-        state.isAuthorized = false
-        return state
-      }),
-      builder.addCase(userAllActions.logoutRequest, (state, action) => {
-        state.isLogoutLoading = true
-        return state
-      }),
-      builder.addCase(userAllActions.logoutSuccess, (state, action) => {
-        state.isLogoutLoading = false
-        state.isAuthorized = false
-        state.data = null
-        return state
-      }),
-      builder.addCase(userAllActions.logoutFailure, (state, action) => {
-        state.isLogoutLoading = false
-        return state
-      })
+    },
+    loginSuccess: (state, action: PayloadAction<LoginSuccessPayload>) => {
+      const {
+        payload: { user },
+      } = action
+      state.isAuthorizationLoading = false
+      state.isAuthorized = true
+      state.data = user
+      return state
+    },
+    loginFailure: (state) => {
+      state.isAuthorizationLoading = false
+      state.isAuthorized = false
+      return state
+    },
+    logoutRequest: (state) => {
+      state.isLogoutLoading = true
+      return state
+    },
+    logoutSuccess: (state) => {
+      state.isLogoutLoading = false
+      state.isAuthorized = false
+      state.data = null
+      return state
+    },
+    logoutFailure: (state) => {
+      state.isLogoutLoading = false
+      return state
+    },
   },
 })
 

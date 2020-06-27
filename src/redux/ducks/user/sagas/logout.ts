@@ -1,5 +1,5 @@
-import { put, takeEvery, delay, call } from 'redux-saga/effects'
-import * as userActions from '../actions'
+import { put, takeEvery, delay } from 'redux-saga/effects'
+import { userActions } from '../'
 
 function* logout() {
   yield delay(1000)

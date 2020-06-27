@@ -1,5 +1,5 @@
 import { put, takeEvery, delay, call } from 'redux-saga/effects'
-import * as userActions from '../actions'
+import { userActions } from '../'
 import { PayloadAction } from '@reduxjs/toolkit'
 import { LoginRequestPayload } from '../'
 

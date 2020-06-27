@@ -1,9 +1,8 @@
 import { Header } from './'
 import { connect } from 'react-redux'
 import { AppState, AppDispatch } from 'rdx/index'
-import { logoutRequest } from 'rdx/ducks/user/actions'
+import { userActions, userSelectors } from 'rdx/ducks/user'
 import { bindActionCreators } from 'redux'
-import * as userSelectors from 'rdx/ducks/user/selectors'
 
 const mapStateToProps = (state: AppState) => ({
   user: userSelectors.getUser(state),
@@ -12,7 +11,7 @@ const mapStateToProps = (state: AppState) => ({
 const mapDispatchToProps = (dispatch: AppDispatch) =>
   bindActionCreators(
     {
-      logoutRequest,
+      logoutRequest: userActions.logoutRequest,
     },
     dispatch,
   )

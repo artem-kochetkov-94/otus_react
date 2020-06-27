@@ -9,5 +9,5 @@ export const rootReducer = combineReducers({
 })
 
 export function* rootSaga() {
-  yield all([fork(userRootSaga)])
+  yield fork(userRootSaga)
 }
