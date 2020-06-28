@@ -1,7 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit'
 import { peopleReducer } from './people'
 import { userReducer, userRootSaga } from './user'
-import { all, fork } from 'redux-saga/effects'
+import { fork } from 'redux-saga/effects'
 
 export const rootReducer = combineReducers({
   people: peopleReducer,

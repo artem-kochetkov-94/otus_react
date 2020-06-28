@@ -1,8 +1,7 @@
 import { put, takeEvery, delay } from 'redux-saga/effects'
-import { userActions } from '../'
+import { userActions } from './'
 
-function* logout() {
-  yield delay(1000)
+export function* logout() {
   yield localStorage.removeItem('login')
   yield put(userActions.logoutSuccess())
 }

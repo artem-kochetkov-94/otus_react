@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { InitialState, LoginRequestPayload, LoginSuccessPayload } from './'
+import { InitialState, LoginSuccessPayload } from './'
 import { createSelector } from '@reduxjs/toolkit'
 import type { AppState } from 'rdx/index'
 
-const initialState: InitialState = {
+export const initialState: InitialState = {
   data: null,
   isAuthorized: false,
   isAuthorizationLoading: false,
@@ -41,7 +41,7 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    loginRequest: (state, action: PayloadAction<LoginRequestPayload>) => {
+    loginRequest: (state) => {
       state.isAuthorizationLoading = true
       state.isAuthorized = false
       return state
