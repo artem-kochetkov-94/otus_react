@@ -1,13 +1,13 @@
 import React from 'react'
 import { TodoListWithData } from 'src/components/TodoList/TodoListWithData'
-import { authorizedOnlyHoc } from 'src/hocs'
-import { Header } from 'src/components'
+import { HeaderContainer } from 'src/components'
+import { AuthorizedOnlyContainer } from 'src/containers'
 
-export const AppScreen: React.FC<{}> = authorizedOnlyHoc(() => {
+export const AppScreen: React.FC<{}> = () => {
   return (
-    <>
-      <Header />
+    <AuthorizedOnlyContainer>
+      <HeaderContainer />
       <TodoListWithData />
-    </>
+    </AuthorizedOnlyContainer>
   )
-})
+}
