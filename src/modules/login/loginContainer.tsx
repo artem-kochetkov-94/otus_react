@@ -1,4 +1,4 @@
-import { Login, userActions } from './'
+import { Login, loginActions } from './'
 import { connect } from 'react-redux'
 import { AppState, AppDispatch } from 'rdx/index'
 import { bindActionCreators } from 'redux'
@@ -8,7 +8,7 @@ const mapStateToProps = (state: AppState) => ({})
 const mapDispatchToProps = (dispatch: AppDispatch) =>
   bindActionCreators(
     {
-      loginRequest: userActions.loginRequest,
+      loginRequest: loginActions.loginRequest,
     },
     dispatch,
   )

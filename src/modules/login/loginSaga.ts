@@ -1,5 +1,5 @@
 import { put, takeEvery, call } from 'redux-saga/effects'
-import { userActions, LoginRequestPayload } from './'
+import { loginActions, LoginRequestPayload } from './'
 import { PayloadAction } from '@reduxjs/toolkit'
 
 export function* fetchUser(action: PayloadAction<LoginRequestPayload>) {
@@ -9,19 +9,19 @@ export function* fetchUser(action: PayloadAction<LoginRequestPayload>) {
     if (login) {
       yield localStorage.setItem('login', login)
       yield put(
-        userActions.loginSuccess({
+        loginActions.loginSuccess({
           user: { login },
         }),
       )
       yield call(history.push, `/`)
     } else {
-      yield put(userActions.loginFailure())
+      yield put(loginActions.loginFailure())
     }
   } catch (e) {
-    yield put(userActions.loginFailure())
+    yield put(loginActions.loginFailure())
   }
 }
 
 export function* loginWatcher() {
-  yield takeEvery(userActions.loginRequest.type, fetchUser)
+  yield takeEvery(loginActions.loginRequest.type, fetchUser)
 }

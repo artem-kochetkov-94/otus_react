@@ -11,34 +11,34 @@ export const initialState: InitialState = {
 }
 
 const getUser = createSelector(
-  (state: AppState) => state.user.data,
+  (state: AppState) => state.login.data,
   (user) => user,
 )
 
 const isAuthorized = createSelector(
-  (state: AppState) => state.user.isAuthorized,
+  (state: AppState) => state.login.isAuthorized,
   (isAuthorized) => isAuthorized,
 )
 
 const isAuthorizationLoading = createSelector(
-  (state: AppState) => state.user.isAuthorizationLoading,
+  (state: AppState) => state.login.isAuthorizationLoading,
   (isAuthorizationLoading) => isAuthorizationLoading,
 )
 
 const isLogoutLoading = createSelector(
-  (state: AppState) => state.user.isLogoutLoading,
+  (state: AppState) => state.login.isLogoutLoading,
   (isLogoutLoading) => isLogoutLoading,
 )
 
-export const userSelectors = {
+export const loginSelectors = {
   getUser,
   isAuthorized,
   isAuthorizationLoading,
   isLogoutLoading,
 }
 
-export const userSlice = createSlice({
-  name: 'user',
+export const loginSlice = createSlice({
+  name: 'login',
   initialState,
   reducers: {
     loginRequest: (state) => {
@@ -77,5 +77,5 @@ export const userSlice = createSlice({
   },
 })
 
-export const userReducer = userSlice.reducer
-export const userActions = userSlice.actions
+export const loginReducer = loginSlice.reducer
+export const loginActions = loginSlice.actions

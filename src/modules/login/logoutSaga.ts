@@ -1,11 +1,11 @@
 import { put, takeEvery } from 'redux-saga/effects'
-import { userActions } from './'
+import { loginActions } from './'
 
 export function* logout() {
   yield localStorage.removeItem('login')
-  yield put(userActions.logoutSuccess())
+  yield put(loginActions.logoutSuccess())
 }
 
 export function* logoutWatcher() {
-  yield takeEvery(userActions.logoutRequest.type, logout)
+  yield takeEvery(loginActions.logoutRequest.type, logout)
 }

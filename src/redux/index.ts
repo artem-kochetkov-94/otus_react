@@ -1,27 +1,20 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
-import { rootReducer } from './ducks'
-import { thunkMiddleware, probablityMiddleware } from './middlewares'
-import createSagaMiddleware from 'redux-saga'
-import { rootSaga } from './ducks'
+import { combineReducers } from '@reduxjs/toolkit'
+import { createStore } from 'redux-dynamic-modules'
+import { getSagaExtension } from 'redux-dynamic-modules-saga'
+import { getThunkExtension } from 'redux-dynamic-modules-thunk'
+import { getLoginModule } from 'src/modules/login'
+import { peopleReducer } from 'src/modules/people'
+import { loginReducer } from 'src/modules/login'
 
-const defaultMiddleware = getDefaultMiddleware({
-  thunk: true,
+export const store = createStore(
+  { extensions: [getSagaExtension({}), getThunkExtension()] },
+  getLoginModule(),
+)
+
+export const rootReducer = combineReducers({
+  people: peopleReducer,
+  login: loginReducer,
 })
-
-const sagaMiddleware = createSagaMiddleware()
-
-export const store = configureStore({
-  reducer: rootReducer,
-  devTools: process.env.NODE_ENV !== 'production',
-  middleware: [
-    ...defaultMiddleware,
-    probablityMiddleware,
-    thunkMiddleware,
-    sagaMiddleware,
-  ],
-})
-
-sagaMiddleware.run(rootSaga)
 
 export type AppState = ReturnType<typeof rootReducer>
 export type AppDispatch = typeof store.dispatch

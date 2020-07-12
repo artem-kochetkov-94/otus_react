@@ -1,16 +1,16 @@
 import { connect } from 'react-redux'
 import { AppState, AppDispatch } from 'rdx/index'
-import { Logout, userActions, userSelectors } from './'
+import { Logout, loginActions, loginSelectors } from './'
 import { bindActionCreators } from 'redux'
 
 const mapStateToProps = (state: AppState) => ({
-  user: userSelectors.getUser(state),
+  user: loginSelectors.getUser(state),
 })
 
 const mapDispatchToProps = (dispatch: AppDispatch) =>
   bindActionCreators(
     {
-      logoutRequest: userActions.logoutRequest,
+      logoutRequest: loginActions.logoutRequest,
     },
     dispatch,
   )

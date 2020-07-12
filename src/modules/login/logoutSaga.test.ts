@@ -1,5 +1,5 @@
 import { expectSaga } from 'redux-saga-test-plan'
-import { userReducer, userActions, logout } from './'
+import { loginReducer, loginActions, logout } from './'
 
 const history = {
   push: jest.fn(),
@@ -8,9 +8,9 @@ const history = {
 describe('logout saga', () => {
   it('logout success', () => {
     return expectSaga(logout, {
-      type: userActions.logoutRequest.type,
+      type: loginActions.logoutRequest.type,
     })
-      .withReducer(userReducer)
+      .withReducer(loginReducer)
       .hasFinalState({
         data: null,
         isAuthorized: false,
