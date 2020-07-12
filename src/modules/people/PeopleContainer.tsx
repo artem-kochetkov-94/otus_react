@@ -1,9 +1,7 @@
-import { PeopleScreen } from './'
 import { connect } from 'react-redux'
 import { AppState, AppDispatch } from 'rdx/index'
-import { fetchPeople } from 'rdx/ducks/people'
-import * as peopleSelectors from 'rdx/ducks/people/selectors'
 import { bindActionCreators } from 'redux'
+import { People, fetchPeople, peopleSelectors } from './'
 
 const mapStateToProps = (state: AppState) => ({
   isFetching: peopleSelectors.isFetching(state),
@@ -19,10 +17,10 @@ const mapDispatchToProps = (dispatch: AppDispatch) =>
     dispatch,
   )
 
-export const PeopleScreenContainer = connect(
+export const PeopleContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(PeopleScreen)
+)(People)
 
 export type StateProps = ReturnType<typeof mapStateToProps>
 export type DispatchProps = ReturnType<typeof mapDispatchToProps>

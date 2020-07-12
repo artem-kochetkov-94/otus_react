@@ -1,5 +1,5 @@
 import { combineReducers } from '@reduxjs/toolkit'
-import { peopleReducer } from './people'
+import { peopleReducer } from 'src/modules/people'
 import { userReducer, userRootSaga } from './user'
 import { fork } from 'redux-saga/effects'
 

@@ -1,4 +1,5 @@
-export * from './selectors'
+export * from './People'
+export * from './PeopleContainer'
 export * from './types'
 export * from './reducer'
 export * from './thunks'

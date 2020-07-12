@@ -1,11 +1,33 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction, createSelector } from '@reduxjs/toolkit'
 import { PeopleInitialState, Person } from './'
 import { fetchPeople } from './thunks'
+import type { AppState } from 'rdx/index'
 
 const initialState: PeopleInitialState = {
   isFetching: false,
   isFetched: false,
   data: [],
+}
+
+export const isFetching = createSelector(
+  (state: AppState) => state.people.isFetching,
+  (isFetching) => isFetching,
+)
+
+export const isFetched = createSelector(
+  (state: AppState) => state.people.isFetching,
+  (isFetched) => isFetched,
+)
+
+export const getPeople = createSelector(
+  (state: AppState) => state.people.data,
+  (people) => people,
+)
+
+export const peopleSelectors = {
+  isFetching,
+  isFetched,
+  getPeople,
 }
 
 export const peopleSlice = createSlice({
