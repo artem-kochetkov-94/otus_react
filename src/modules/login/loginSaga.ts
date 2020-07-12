@@ -1,7 +1,6 @@
 import { put, takeEvery, call } from 'redux-saga/effects'
-import { userActions } from './'
+import { userActions, LoginRequestPayload } from './'
 import { PayloadAction } from '@reduxjs/toolkit'
-import { LoginRequestPayload } from './'
 
 export function* fetchUser(action: PayloadAction<LoginRequestPayload>) {
   const { login, history } = action.payload

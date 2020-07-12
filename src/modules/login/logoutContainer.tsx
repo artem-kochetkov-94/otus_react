@@ -1,7 +1,6 @@
-import { Header } from './'
 import { connect } from 'react-redux'
 import { AppState, AppDispatch } from 'rdx/index'
-import { userActions, userSelectors } from 'rdx/ducks/user'
+import { Logout, userActions, userSelectors } from './'
 import { bindActionCreators } from 'redux'
 
 const mapStateToProps = (state: AppState) => ({
@@ -16,10 +15,10 @@ const mapDispatchToProps = (dispatch: AppDispatch) =>
     dispatch,
   )
 
-export const HeaderContainer = connect(
+export const LogoutContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Header)
+)(Logout)
 
 export type StateProps = ReturnType<typeof mapStateToProps>
 export type DispatchProps = ReturnType<typeof mapDispatchToProps>

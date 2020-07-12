@@ -1,12 +1,12 @@
 import React from 'react'
 import { TodoListWithData } from 'src/components/TodoList/TodoListWithData'
-import { HeaderContainer } from 'src/components'
-import { AuthorizedOnlyContainer } from 'src/containers'
+import { Logout } from 'src/modules/login'
+import { AuthorizedOnlyContainer } from 'src/modules/login'
 
 export const AppScreen: React.FC<{}> = () => {
   return (
     <AuthorizedOnlyContainer>
-      <HeaderContainer />
+      <Logout />
       <TodoListWithData />
     </AuthorizedOnlyContainer>
   )

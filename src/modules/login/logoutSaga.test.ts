@@ -1,6 +1,5 @@
 import { expectSaga } from 'redux-saga-test-plan'
-import { logout } from './'
-import { userReducer, userActions } from './'
+import { userReducer, userActions, logout } from './'
 
 const history = {
   push: jest.fn(),

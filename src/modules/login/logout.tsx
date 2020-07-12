@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react'
-import { ReduxToProps } from './HeaderContainer'
+import { ReduxToProps } from './logoutContainer'
 
-type HeaderProps = ReduxToProps
+type LogoutProps = ReduxToProps
 
-export const Header: React.FC<HeaderProps> = ({ user, logoutRequest }) => {
+export const Logout: React.FC<LogoutProps> = ({ user, logoutRequest }) => {
   const onSubmit = useCallback(async (ev) => {
     ev.preventDefault()
     logoutRequest()

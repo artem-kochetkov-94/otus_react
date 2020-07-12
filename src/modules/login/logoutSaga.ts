@@ -1,4 +1,4 @@
-import { put, takeEvery, delay } from 'redux-saga/effects'
+import { put, takeEvery } from 'redux-saga/effects'
 import { userActions } from './'
 
 export function* logout() {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { AppState, AppDispatch } from 'rdx/index'
-import { userActions, userSelectors } from 'rdx/ducks/user'
+import { userActions, userSelectors } from './'
 import { bindActionCreators } from 'redux'
 import { Redirect } from 'react-router-dom'
 
