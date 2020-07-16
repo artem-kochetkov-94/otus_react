@@ -1,6 +1,5 @@
 import { expectSaga } from 'redux-saga-test-plan'
-import { fetchUser } from './'
-import { userReducer, userActions } from './'
+import { loginReducer, loginActions, fetchUser } from './'
 
 const history = {
   push: jest.fn(),
@@ -10,13 +9,13 @@ describe('Login saga', () => {
   it('login success', () => {
     const userName = 'Username'
     return expectSaga(fetchUser, {
-      type: userActions.loginRequest.type,
+      type: loginActions.loginRequest.type,
       payload: {
         login: userName,
         history,
       },
     })
-      .withReducer(userReducer)
+      .withReducer(loginReducer)
       .hasFinalState({
         data: {
           login: userName,
@@ -30,13 +29,13 @@ describe('Login saga', () => {
   it('login fail', () => {
     const userName = ''
     return expectSaga(fetchUser, {
-      type: userActions.loginRequest.type,
+      type: loginActions.loginRequest.type,
       payload: {
         login: userName,
         history,
       },
     })
-      .withReducer(userReducer)
+      .withReducer(loginReducer)
       .hasFinalState({
         data: null,
         isAuthorized: false,

@@ -1,25 +1,26 @@
-import { Header } from './'
 import { connect } from 'react-redux'
 import { AppState, AppDispatch } from 'rdx/index'
-import { userActions, userSelectors } from 'rdx/ducks/user'
 import { bindActionCreators } from 'redux'
+import { People, fetchPeople, peopleSelectors } from './'
 
 const mapStateToProps = (state: AppState) => ({
-  user: userSelectors.getUser(state),
+  isFetching: peopleSelectors.isFetching(state),
+  isFetched: peopleSelectors.isFetched(state),
+  people: peopleSelectors.getPeople(state),
 })
 
 const mapDispatchToProps = (dispatch: AppDispatch) =>
   bindActionCreators(
     {
-      logoutRequest: userActions.logoutRequest,
+      fetchPeople,
     },
     dispatch,
   )
 
-export const HeaderContainer = connect(
+export const PeopleContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Header)
+)(People)
 
 export type StateProps = ReturnType<typeof mapStateToProps>
 export type DispatchProps = ReturnType<typeof mapDispatchToProps>

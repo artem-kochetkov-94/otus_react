@@ -1,7 +1,6 @@
-import { LoginScreen } from './'
+import { Login, loginActions } from './'
 import { connect } from 'react-redux'
 import { AppState, AppDispatch } from 'rdx/index'
-import { userActions } from 'rdx/ducks/user/'
 import { bindActionCreators } from 'redux'
 
 const mapStateToProps = (state: AppState) => ({})
@@ -9,15 +8,15 @@ const mapStateToProps = (state: AppState) => ({})
 const mapDispatchToProps = (dispatch: AppDispatch) =>
   bindActionCreators(
     {
-      loginRequest: userActions.loginRequest,
+      loginRequest: loginActions.loginRequest,
     },
     dispatch,
   )
 
-export const LoginScreenContainer = connect(
+export const LoginContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(LoginScreen)
+)(Login)
 
 export type StateProps = ReturnType<typeof mapStateToProps>
 export type DispatchProps = ReturnType<typeof mapDispatchToProps>
