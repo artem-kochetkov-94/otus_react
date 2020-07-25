@@ -1,7 +1,7 @@
 import { put, takeEvery, call } from 'redux-saga/effects'
 import { peopleActions } from './'
 
-function fetchPeople() {
+export function fetchPeople() {
   return fetch('https://swapi.dev/api/people')
     .then((response) => response.json())
     .then(({ results }) => results)
@@ -20,5 +20,5 @@ export function* fetchPeopleSaga() {
 }
 
 export function* fetchPeopleWatcher() {
-  yield takeEvery(peopleActions.fetchPeopleRequest, fetchPeople)
+  yield takeEvery(peopleActions.fetchPeopleRequest.type, fetchPeopleSaga)
 }
