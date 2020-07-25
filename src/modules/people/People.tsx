@@ -8,7 +8,7 @@ export const People: React.FC<PeopleProps> = ({
   isFetching,
   isFetched,
   people,
-  fetchPeople,
+  fetchPeopleRequest,
 }) => {
   if (isFetching) {
     return <p>Loading...</p>
@@ -21,9 +21,9 @@ export const People: React.FC<PeopleProps> = ({
           people.map((person: Person) => (
             <p key={person.name}>{person.name}</p>
           ))}
-        <button onClick={() => fetchPeople()}>Fetch people</button>
+        <button onClick={() => fetchPeopleRequest()}>Fetch people</button>
       </>
     )
 
-  return <button onClick={() => fetchPeople()}>Fetch people</button>
+  return <button onClick={() => fetchPeopleRequest()}>Fetch people</button>
 }

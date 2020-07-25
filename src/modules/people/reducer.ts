@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction, createSelector } from '@reduxjs/toolkit'
 import { PeopleInitialState, Person } from './'
-import { fetchPeople } from './thunks'
 import type { AppState } from 'rdx/index'
 
 const initialState: PeopleInitialState = {
@@ -33,28 +32,25 @@ export const peopleSelectors = {
 export const peopleSlice = createSlice({
   name: 'people',
   initialState,
-  reducers: {},
-  extraReducers: {
-    [fetchPeople.pending.toString()]: (state, action) => {
+  reducers: {
+    fetchPeopleRequest: (state) => {
       state.isFetching = true
       state.isFetched = false
       return state
     },
-    [fetchPeople.fulfilled.toString()]: (
-      state,
-      { payload }: PayloadAction<Person[] | []>,
-    ) => {
+    fetchPeopleSuccess: (state, { payload }: PayloadAction<Person[] | []>) => {
       state.isFetching = false
       state.isFetched = true
       state.data = payload
       return state
     },
-    [fetchPeople.rejected.toString()]: (state, action) => {
+    fetchPeopleFailure: (state) => {
       state.isFetching = false
       state.isFetched = false
       return state
     },
   },
+  extraReducers: {},
 })
 
 export const peopleReducer = peopleSlice.reducer
