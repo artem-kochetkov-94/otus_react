@@ -1,9 +1,11 @@
-import { peopleReducer, fetchPeople } from './'
+import { ISagaModule } from 'redux-dynamic-modules-saga'
 
-export const getPeopleModule = () => ({
+import { peopleReducer, peopleRootSaga } from './'
+
+export const getPeopleModule = (): ISagaModule<typeof peopleReducer> => ({
   id: 'people',
   reducerMap: {
     people: peopleReducer,
   },
-  thunks: [fetchPeople],
+  sagas: [peopleRootSaga],
 })

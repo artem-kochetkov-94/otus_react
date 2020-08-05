@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { AppState, AppDispatch } from 'rdx/index'
 import { bindActionCreators } from 'redux'
-import { People, fetchPeople, peopleSelectors } from './'
+import { People, peopleActions, peopleSelectors } from './'
 
 const mapStateToProps = (state: AppState) => ({
   isFetching: peopleSelectors.isFetching(state),
@@ -12,7 +12,7 @@ const mapStateToProps = (state: AppState) => ({
 const mapDispatchToProps = (dispatch: AppDispatch) =>
   bindActionCreators(
     {
-      fetchPeople,
+      fetchPeopleRequest: peopleActions.fetchPeopleRequest,
     },
     dispatch,
   )
