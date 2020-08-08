@@ -1,4 +1,4 @@
-import { put, takeEvery, call } from 'redux-saga/effects'
+import { put, takeEvery, call, fork } from 'redux-saga/effects'
 import { peopleActions } from './'
 
 export function fetchPeople() {
@@ -21,4 +21,8 @@ export function* fetchPeopleSaga() {
 
 export function* fetchPeopleWatcher() {
   yield takeEvery(peopleActions.fetchPeopleRequest.type, fetchPeopleSaga)
+}
+
+export function* peopleRootSaga() {
+  yield fork(fetchPeopleWatcher)
 }
