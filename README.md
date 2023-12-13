@@ -1,1 +1,1 @@
-# otus_react
+# otus.ru курс по React
